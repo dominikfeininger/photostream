@@ -6,5 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-names = Name.create([{:firstname => 'roy', :lastname => 'braun'},
+users = User.create([{:firstname => 'roy', :lastname => 'braun'},
                      {:firstname => 'dominik', :lastname => 'feininger'}]);
+
+
+pics = Pic.create([{:path => "one.jpg"}]);

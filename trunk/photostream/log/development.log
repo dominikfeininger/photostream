@@ -1,0 +1,859 @@
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 19:40:05 +0200
+  Processing by HomeController#index as HTML
+PGError: FEHLER:  Relation Â»namesÂ« existiert nicht
+LINE 4:              WHERE a.attrelid = '"names"'::regclass
+                                        ^
+:             SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+              FROM pg_attribute a LEFT JOIN pg_attrdef d
+                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+             WHERE a.attrelid = '"names"'::regclass
+               AND a.attnum > 0 AND NOT a.attisdropped
+             ORDER BY a.attnum
+Completed 500 Internal Server Error in 254ms
+
+ActiveRecord::StatementInvalid (PGError: FEHLER:  Relation Â»namesÂ« existiert nicht
+LINE 4:              WHERE a.attrelid = '"names"'::regclass
+                                        ^
+:             SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+              FROM pg_attribute a LEFT JOIN pg_attrdef d
+                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+             WHERE a.attrelid = '"names"'::regclass
+               AND a.attnum > 0 AND NOT a.attisdropped
+             ORDER BY a.attnum
+):
+  app/controllers/home_controller.rb:4:in `index'
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (49.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 20:05:13 +0200
+
+PGError (FATAL:  keine Berechtigung für Datenbank »photostream«
+DETAIL:  Benutzer hat das CONNECT-Privileg nicht.
+):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (77.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 20:06:58 +0200
+
+PGError (FATAL:  keine Berechtigung für Datenbank »photostream«
+DETAIL:  Benutzer hat das CONNECT-Privileg nicht.
+):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 20:28:20 +0200
+
+PGError (FATAL:  keine Berechtigung für Datenbank »photostream«
+DETAIL:  Benutzer hat das CONNECT-Privileg nicht.
+):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 20:48:14 +0200
+
+PGError (FATAL:  keine Berechtigung für Datenbank »photostream«
+DETAIL:  Benutzer hat das CONNECT-Privileg nicht.
+):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (29.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (80.0ms)
+  [1m[36m (88.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  SHOW search_path
+  [1m[36m (3.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35m (100.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to AddfirstTable (20111027141747)
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (152.0ms)[0m  [1mCREATE TABLE "names" ("id" serial primary key, "firstname" character varying(255), "lastname" character varying(255)) [0m
+  [1m[35m (56.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111027141747')
+  [1m[36m (5.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (3.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (2.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'names'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "names" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"[0m  [["firstname", "roy"], ["lastname", "braun"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "names" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"  [["firstname", "dominik"], ["lastname", "feininger"]]
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 21:46:19 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mName Load (1.0ms)[0m  [1mSELECT "names".* FROM "names" [0m
+Rendered home/index.html.erb within layouts/application (54.0ms)
+Cache for Asset (application.js) is stale
+/Library/Ruby/Gems/1.8/gems/jquery-rails-1.0.16/vendor/assets/javascripts/jquery.js isn't in paths: C:/Users/feininger/workspace/photostream/app/assets/images, C:/Users/feininger/workspace/photostream/app/assets/javascripts, C:/Users/feininger/workspace/photostream/app/assets/stylesheets, C:/Users/feininger/workspace/photostream/vendor/assets/stylesheets, C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/jquery-rails-1.0.16/vendor/assets/javascripts
+Compiled application.js  (28ms)  (pid 5636)
+Compiled jquery.js  (53ms)  (pid 5636)
+Compiled jquery_ujs.js  (17ms)  (pid 5636)
+Completed 200 OK in 966ms (Views: 683.0ms | ActiveRecord: 38.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 21:46:28 +0200
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 21:46:28 +0200
+Served asset /jquery.js - 200 OK (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 21:46:28 +0200
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 21:46:28 +0200
+Served asset /application.js - 200 OK (0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to AddfirstTable (20111027141747)
+  [1m[35m (16.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+PGError: FEHLER:  Relation Â»usersÂ« existiert nicht
+LINE 4:              WHERE a.attrelid = '"users"'::regclass
+                                        ^
+:             SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+              FROM pg_attribute a LEFT JOIN pg_attrdef d
+                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+             WHERE a.attrelid = '"users"'::regclass
+               AND a.attnum > 0 AND NOT a.attisdropped
+             ORDER BY a.attnum
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141747)
+  [1m[35m (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141747)
+  [1m[35m (17.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141747)
+  [1m[35m (17.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141747)
+  [1m[35m (17.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (2.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141747)
+  [1m[35m (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141861)
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (174.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "firstname" character varying(255), "lastname" character varying(255)) [0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111027141861')
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (3.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36m (2.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"[0m  [["firstname", "roy"], ["lastname", "braun"]]
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"  [["firstname", "dominik"], ["lastname", "feininger"]]
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141861)
+Migrating to CreatePiscTable (20111029205624)
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsersTable (20111027141861)
+Migrating to CreatePiscTable (20111029205624)
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (120.0ms)[0m  [1mCREATE TABLE "pics" ("id" serial primary key, "path" character varying(255)) [0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111029205624')
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (3.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'pics'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36m (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"[0m  [["firstname", "roy"], ["lastname", "braun"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"  [["firstname", "dominik"], ["lastname", "feininger"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[36m (2.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"[0m  [["firstname", "roy"], ["lastname", "braun"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("firstname", "lastname") VALUES ($1, $2) RETURNING "id"  [["firstname", "dominik"], ["lastname", "feininger"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "pics" ("path") VALUES ($1) RETURNING "id"[0m  [["path", "../pics/one.jpg"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 23:04:47 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:04:47 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:04:47 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:04:47 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:04:47 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-10-29 23:04:52 +0200
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics" for 127.0.0.1 at 2011-10-29 23:04:57 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pic" for 127.0.0.1 at 2011-10-29 23:05:00 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pic"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics" for 127.0.0.1 at 2011-10-29 23:05:03 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics" for 127.0.0.1 at 2011-10-29 23:07:20 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:07:29 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (1.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:07:29 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:07:29 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:07:29 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:07:29 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (2.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 13.0ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:09:10 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (22.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 13.0ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:09:49 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:10:42 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (0.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+ERROR: compiling _app_views_pics_index_html_erb___878145442_32709852 RAISED C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: syntax error, unexpected '<'
+...end= ( image_tag "one.png" => <img src= p.path /> );@output_...
+...                               ^
+C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: syntax error, unexpected tREGEXP_BEG, expecting ')'
+..."one.png" => <img src= p.path /> );@output_buffer.safe_conca...
+...                               ^
+C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: unterminated regexp meets end of file
+Function body:           def _app_views_pics_index_html_erb___878145442_32709852(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "pics/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>pics</h1>
+
+'); @pics.each do |p|
+@output_buffer.append= ( p.path);@output_buffer.safe_concat('
+');@output_buffer.append= ( image_tag "one.png" => <img src= p.path /> );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('<br>
+');end
+@output_buffer.safe_concat('
+
+
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/template.rb:282:in `module_eval'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/template.rb:282:in `compile'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/template.rb:190:in `compile!'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/template.rb:143:in `block in render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications.rb:55:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/template.rb:142:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:40:in `block (2 levels) in render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications.rb:53:in `block in instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications.rb:53:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:39:in `block in render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:12:in `block in render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/template_renderer.rb:9:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/renderer.rb:36:in `render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_view/renderer/renderer.rb:17:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/rendering.rb:120:in `_render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/rendering.rb:99:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/rendering.rb:16:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+c:/Ruby192/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activerecord-3.1.1/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:39:in `render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/base.rb:167:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/rendering.rb:10:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:416:in `_run__463601665__process_action__73232523__callbacks'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/callbacks.rb:17:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/rescue.rb:17:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications.rb:53:in `block in instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/notifications.rb:53:in `instrument'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activerecord-3.1.1/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/base.rb:121:in `process'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/abstract_controller/rendering.rb:45:in `process'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal.rb:193:in `dispatch'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_controller/metal.rb:236:in `block in action'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/routing/route_set.rb:65:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/routing/route_set.rb:29:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `block in call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `block in recognize'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/routing/route_set.rb:532:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/etag.rb:23:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/conditionalget.rb:25:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/head.rb:14:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/flash.rb:243:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:195:in `context'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:190:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/cookies.rb:331:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activerecord-3.1.1/lib/active_record/query_cache.rb:62:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activerecord-3.1.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/sendfile.rb:101:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/railties-3.1.1/lib/rails/rack/logger.rb:13:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/methodoverride.rb:24:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/runtime.rb:17:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/activesupport-3.1.1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/lock.rb:15:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/static.rb:53:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/railties-3.1.1/lib/rails/engine.rb:456:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/railties-3.1.1/lib/rails/rack/content_length.rb:16:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/railties-3.1.1/lib/rails/rack/log_tailer.rb:14:in `call'
+C:/Users/feininger/workspace/photostream/json/ruby/1.9.1/gems/rack-1.3.5/lib/rack/handler/webrick.rb:59:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+c:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered pics/index.html.erb within layouts/application (115.0ms)
+Completed 500 Internal Server Error in 148ms
+
+ActionView::Template::Error (C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: syntax error, unexpected '<'
+...end= ( image_tag "one.png" => <img src= p.path /> );@output_...
+...                               ^
+C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: syntax error, unexpected tREGEXP_BEG, expecting ')'
+..."one.png" => <img src= p.path /> );@output_buffer.safe_conca...
+...                               ^
+C:/Users/feininger/workspace/photostream/app/views/pics/index.html.erb:5: unterminated regexp meets end of file):
+    2: 
+    3: <% @pics.each do |p|%>
+    4: <%= p.path%>
+    5: <%= image_tag "one.png" => <img src= p.path /> %>
+    6: <br>
+    7: <%end%>
+    8: 
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (30.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (1.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:11:29 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:12:27 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (0.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:12:27 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:12:27 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:12:28 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:12:28 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:12:28 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:13:19 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (0.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 26ms (Views: 21.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:13:20 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:13:20 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:13:20 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:13:20 +0200
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:13:20 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (0.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:14:31 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (1.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:15:41 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (0.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:15:42 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:42 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:42 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:42 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:15:42 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (1.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 13.0ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:15:53 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (1.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:15:53 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:53 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:53 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:15:53 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (0.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/one.jpg" for 127.0.0.1 at 2011-10-29 23:17:45 +0200
+
+ActionController::RoutingError (No route matches [GET] "/pics/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:19:33 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (1.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:19:34 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:19:34 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:19:34 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:19:34 +0200
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/one.jpg" for 127.0.0.1 at 2011-10-29 23:19:34 +0200
+Served asset /one.jpg - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/one.jpg"):
+  
+
+Rendered json/ruby/1.9.1/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+  Processing by PicsController#index as HTML
+  [1m[35mPic Load (0.0ms)[0m  SELECT "pics".* FROM "pics" 
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/one.jpg" for 127.0.0.1 at 2011-10-29 23:20:42 +0200
+Served asset /one.jpg - 200 OK (14ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-10-29 23:21:42 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:21:42 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:42 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:42 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:42 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/pics/index" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+  Processing by PicsController#index as HTML
+  [1m[36mPic Load (0.0ms)[0m  [1mSELECT "pics".* FROM "pics" [0m
+Rendered pics/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2011-10-29 23:21:49 +0200
+Served asset /rails.png - 200 OK (117ms)
