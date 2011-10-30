@@ -1,0 +1,14 @@
+<h1>pics</h1>
+
+<% @pics.each do |p|%>
+<%= p.path%>
+<br/>
+<%= image_tag "#{p.path}"%>
+<br>
+<%end%>
+
+
+
+
+
+

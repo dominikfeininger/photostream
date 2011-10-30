@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: photostream
+  database: photostream_dev
   pool: 5
   username: photostream
   password: photostream
